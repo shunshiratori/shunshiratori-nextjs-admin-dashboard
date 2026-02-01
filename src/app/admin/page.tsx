@@ -1,38 +1,15 @@
-"use client";
+import Link from "next/link";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { supabase } from "../../../lib/supabaseClient";
-
-export default function LoginPage() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleLogin = async () => {
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-
-    if (error) {
-      alert("ログインに失敗しました");
-    } else {
-      router.push("/admin");
-    }
-  };
-
+export default function AdminDashboard() {
   return (
     <div>
-      <div>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={handleLogin}>ログイン</button>
-      </div>
+      <h1>Admin Dashboard</h1>
+      <p>ようこそ。あなたはログインしています。</p>
+      <p>
+        ここからサイトの管理ができます。例えば、
+        <Link href="/admin/posts">投稿一覧</Link>
+        を見ることができます。
+      </p>
     </div>
   );
 }
