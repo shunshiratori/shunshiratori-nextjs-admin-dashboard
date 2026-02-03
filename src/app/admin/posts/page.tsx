@@ -34,7 +34,7 @@ export default async function PostsPage() {
       <ul>
         {posts?.map((post) => (
           <li key={post.id}>
-            {post.title} / {post.status}{" "}
+            {post.title} / {post.content}{" "}
             <Link href={`/admin/posts/${post.id}/edit`}>編集</Link>
           </li>
         ))}
