@@ -1,46 +1,20 @@
-import { createServerClient } from "@supabase/ssr";
-import { NextResponse } from "next/server";
+import { createClient } from "./lib/supabase/middleware";
+import { NextResponse, type NextRequest } from "next/server";
 
-export async function middleware(request) {
-  const response = NextResponse.next();
+export async function middleware(request: NextRequest) {
+  const { supabase, response } = createClient(request);
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    {
-      cookies: {
-        get(name) {
-          return request.cookies.get(name)?.value;
-        },
-        set(name, value, options) {
-          request.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-          response.cookies.set({
-            name,
-            value,
-            ...options,
-          });
-        },
-        remove(name, options) {
-          request.cookies.set({
-            name,
-            value: "",
-            ...options,
-          });
-          response.cookies.set({
-            name,
-            value: "",
-            ...options,
-          });
-        },
-      },
-    },
-  );
+  // Refresh session if expired - required for Server Components
+  // https://supabase.com/docs/guides/auth/auth-helpers/nextjs#managing-session-with-middleware
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
-  await supabase.auth.getSession();
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    if (!session) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
+  }
 
   return response;
 }
