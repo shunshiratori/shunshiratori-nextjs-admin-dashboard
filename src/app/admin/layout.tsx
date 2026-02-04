@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function AdminLayout({
@@ -29,5 +30,18 @@ export default async function AdminLayout({
     redirect("/login");
   }
 
-  return <>{children}</>;
+  return (
+    <div className="flex min-h-screen">
+      <aside className="w-52 border-r p-4">
+        <h2 className="font-bold mb-4">Admin</h2>
+        <ul className="space-y-2">
+          <li>
+            <Link href="/admin/posts">記事</Link>
+          </li>
+        </ul>
+      </aside>
+
+      <main>{children}</main>
+    </div>
+  );
 }
