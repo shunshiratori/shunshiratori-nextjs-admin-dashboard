@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { cookies } from "next/headers";
 import Link from "next/link";
+import PostList from "./PostList";
 
 export default async function PostsPage() {
   const cookieStore = await cookies();
@@ -20,14 +21,7 @@ export default async function PostsPage() {
       <h1>記事一覧</h1>
       <Link href="/admin/posts/new">新規作成</Link>
 
-      <ul>
-        {posts?.map((post) => (
-          <li key={post.id}>
-            {post.title} / {post.content}{" "}
-            <Link href={`/admin/posts/${post.id}/edit`}>編集</Link>
-          </li>
-        ))}
-      </ul>
+      <PostList posts={posts ?? []} />
     </div>
   );
 }
