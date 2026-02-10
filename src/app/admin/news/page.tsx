@@ -14,11 +14,16 @@ export default async function NewsPage() {
   return (
     <div>
       <h1>お知らせ</h1>
+      <Link className="" href="/admin/news/new">
+        新規作成
+      </Link>
 
       <ul>
         {news?.map((item) => (
           <li key={item.id}>
-            <Link href={`/news/${item.id}`}>{item.title}</Link>
+            {item.title} / {item.content}{" "}
+            <Link href={`/admin/news/${item.id}/edit`}>編集</Link>
+            <button>削除</button>
           </li>
         ))}
       </ul>
