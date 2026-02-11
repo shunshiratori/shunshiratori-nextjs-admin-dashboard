@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { cookies } from "next/headers";
 import Link from "next/link";
+import NewsList from "./NewsList";
 
 export default async function NewsPage() {
   const cookieStore = await cookies();
@@ -18,15 +19,7 @@ export default async function NewsPage() {
         新規作成
       </Link>
 
-      <ul>
-        {news?.map((item) => (
-          <li key={item.id}>
-            {item.title} / {item.content}{" "}
-            <Link href={`/admin/news/${item.id}/edit`}>編集</Link>
-            <button>削除</button>
-          </li>
-        ))}
-      </ul>
+      <NewsList news={news ?? []} />
     </div>
   );
 }
