@@ -6,6 +6,7 @@ export default function Home() {
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
         <Link href="/admin/">ログイン</Link>
         <Link href="/news/">ニュース一覧</Link>
+        <Link href="/contact/">お問い合わせ</Link>
       </main>
     </div>
   );

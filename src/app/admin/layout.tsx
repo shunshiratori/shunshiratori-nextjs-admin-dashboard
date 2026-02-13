@@ -41,6 +41,9 @@ export default async function AdminLayout({
           <li>
             <Link href="/admin/news">お知らせ</Link>
           </li>
+          <li>
+            <Link href="/admin/contact">お問い合わせ</Link>
+          </li>
         </ul>
       </aside>
 
