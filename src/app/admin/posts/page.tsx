@@ -18,9 +18,14 @@ export default async function PostsPage() {
 
   return (
     <div>
-      <h1>記事一覧</h1>
-      <Link href="/admin/posts/new">新規作成</Link>
+      <h1 className="text-4xl font-bold mb-4">記事一覧</h1>
 
+      <Link
+        href="/admin/posts/new"
+        className="bg-gray-600 rounded p-4 inline-grid mb-4"
+      >
+        新規作成
+      </Link>
       <PostList posts={posts ?? []} />
     </div>
   );

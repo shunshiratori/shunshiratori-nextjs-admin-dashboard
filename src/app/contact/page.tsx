@@ -29,26 +29,34 @@ export default function ContactPage() {
   };
 
   return (
-    <div>
-      <h1>お問い合わせページ</h1>
+    <div className="p-4">
+      <h1 className="text-4xl font-bold mb-4">お問い合わせ</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        className="grid gap-6 bg-gray-800 p-4 rounded"
+      >
         <input
           placeholder="お名前"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="bg-gray-950 p-2 rounded"
         />
         <input
           placeholder="メールアドレス"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          className="bg-gray-950 p-2 rounded"
         />
         <textarea
           placeholder="内容"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          className="bg-gray-950 p-2 rounded"
         />
-        <button type="submit">送信</button>
+        <button type="submit" className="mb-4 bg-gray-950 rounded p-4 ">
+          送信
+        </button>
       </form>
     </div>
   );

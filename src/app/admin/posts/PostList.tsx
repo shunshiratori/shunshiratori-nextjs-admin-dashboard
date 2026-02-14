@@ -27,12 +27,22 @@ export default function PostList({ posts }: { posts: Post[] }) {
   };
 
   return (
-    <ul>
+    <ul className="grid gap-3">
       {posts.map((post) => (
         <li key={post.id}>
           {post.title} / {post.content}{" "}
-          <Link href={`/admin/posts/${post.id}/edit`}>編集</Link>{" "}
-          <button onClick={() => handleDelete(post.id)}>削除</button>
+          <Link
+            href={`/admin/posts/${post.id}/edit`}
+            className="text-blue-500 hover:underline"
+          >
+            編集
+          </Link>{" "}
+          <button
+            onClick={() => handleDelete(post.id)}
+            className="ml-2 text-red-500 hover:underline"
+          >
+            削除
+          </button>
         </li>
       ))}
     </ul>

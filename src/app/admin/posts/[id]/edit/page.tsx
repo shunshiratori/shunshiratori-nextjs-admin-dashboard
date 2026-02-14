@@ -68,23 +68,36 @@ export default function EditPostsPage() {
 
   return (
     <div>
-      <h1>投稿編集</h1>
-      <div>
-        <label>タイトル:</label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>内容:</label>
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-      </div>
-      <button onClick={handleUpdate}>更新</button>
+      <h1 className="text-4xl font-bold mb-4">投稿編集</h1>
+
+      <table className="mb-4 text-left">
+        <tr>
+          <th className="p-2 border">タイトル</th>
+          <td className="p-2 border">
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </td>
+        </tr>
+        <tr>
+          <th className="p-2 border">内容</th>
+          <td className="p-2 border">
+            <textarea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            />
+          </td>
+        </tr>
+      </table>
+
+      <button
+        onClick={handleUpdate}
+        className="inline-block p-3 bg-gray-600 rounded"
+      >
+        更新
+      </button>
     </div>
   );
 }

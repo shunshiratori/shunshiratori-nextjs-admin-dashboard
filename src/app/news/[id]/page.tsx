@@ -50,9 +50,10 @@ export default function NewsDetailPage() {
   }
 
   return (
-    <div>
-      <h1>タイトル : {title}</h1>
-      <h2>内容</h2>
+    <div className="p-4">
+      <h1 className="text-3xl font-bold mb-4">タイトル : {title}</h1>
+
+      <h2 className="text-xl mb-2">内容</h2>
       <p>{content}</p>
     </div>
   );

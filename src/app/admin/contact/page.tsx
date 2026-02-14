@@ -16,25 +16,25 @@ export default async function ContactPage() {
 
   return (
     <div>
-      <h1>お問い合わせ一覧</h1>
+      <h1 className="text-2xl font-bold mb-4">お問い合わせ一覧</h1>
 
-      <table border={1}>
+      <table border={1} className="bg-gray-800">
         <thead>
           <tr>
-            <th>名前</th>
-            <th>メールアドレス</th>
-            <th>内容</th>
-            <th>ステータス</th>
+            <th className="bg-gray-900 p-2">名前</th>
+            <th className="bg-gray-900 p-2">メールアドレス</th>
+            <th className="bg-gray-900 p-2">内容</th>
+            <th className="bg-gray-900 p-2">ステータス</th>
           </tr>
         </thead>
 
         <tbody>
           {contact?.map((item) => (
             <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>{item.email}</td>
-              <td>{item.message}</td>
-              <td>{item.status}</td>
+              <td className="p-2">{item.name}</td>
+              <td className="p-2">{item.email}</td>
+              <td className="p-2">{item.message}</td>
+              <td className="p-2">{item.status}</td>
             </tr>
           ))}
         </tbody>

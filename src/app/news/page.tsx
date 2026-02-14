@@ -17,14 +17,16 @@ export default async function NewsPage() {
   }
 
   return (
-    <div>
-      <h1>News</h1>
+    <div className="p-4">
+      <h1 className="text-3xl font-bold">News</h1>
 
       <ul>
         {news?.map((item) => (
-          <li key={item.id} className="my-4">
-            <Link href={`/news/${item.id}`}>{item.title}</Link>
-            <p>{item.content}</p>
+          <li key={item.id} className="my-4 border p-4 rounded bg-gray-900">
+            <Link href={`/news/${item.id}`} className="">
+              <p>{item.title}</p>
+              <p>{item.content}</p>
+            </Link>
           </li>
         ))}
       </ul>

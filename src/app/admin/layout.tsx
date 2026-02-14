@@ -33,21 +33,24 @@ export default async function AdminLayout({
   return (
     <div className="flex min-h-screen">
       <aside className="w-52 border-r p-4">
-        <h2 className="font-bold mb-4">Admin</h2>
+        <h2 className="font-bold mb-4 text-2xl">Admin</h2>
         <ul className="space-y-2">
           <li>
-            <Link href="/admin/posts">記事</Link>
+            <Link href="/admin/posts">投稿</Link>
           </li>
           <li>
-            <Link href="/admin/news">お知らせ</Link>
+            <Link href="/admin/news">ニュース</Link>
           </li>
           <li>
             <Link href="/admin/contact">お問い合わせ</Link>
           </li>
+          <li>
+            <Link href="/">公開ページ</Link>
+          </li>
         </ul>
       </aside>
 
-      <main>{children}</main>
+      <main className="p-4">{children}</main>
     </div>
   );
 }
